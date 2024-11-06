@@ -12,3 +12,68 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+
+model Resource {
+  id              Int             @id @default(autoincrement())
+  title           String
+  description     String?
+  dateEstablished DateTime?
+  dateUpdated     DateTime?       @updatedAt
+  
+  // Relationships
+  authorities     Contact[]       @relation("ResourceAuthorities")
+  stewards        Contact[]       @relation("ResourceStewards")
+  mavens          Contact[]       @relation("ResourceMavens")
+  trainings       TrainingResource[]
+
+  nationTags      Nation[]        @relation("ResourceNationTags")
+  attributeTags   AttributeTag[]  @relation("ResourceAttributeTags")
+  geographicTags  GeographicTag[] @relation("ResourceGeographicTags")
+
+  createdAt       DateTime        @default(now())
+  updatedAt       DateTime        @updatedAt
+}
+
+model Contact {
+  id         Int       @id @default(autoincrement())
+  name       String
+  email      String?
+  phone      String?
+
+  // Relationships
+  authorityFor Resource[] @relation("ResourceAuthorities")
+  stewardFor   Resource[] @relation("ResourceStewards")
+  mavenFor     Resource[] @relation("ResourceMavens")
+}
+
+model TrainingResource {
+  id             Int      @id @default(autoincrement())
+  title          String
+  description    String?
+  url            String?
+  dateEstablished DateTime?
+  dateUpdated    DateTime?
+  
+  // Foreign Key
+  resourceId     Int
+  resource       Resource @relation(fields: [resourceId], references: [id])
+}
+
+model Nation {
+  id         Int         @id @default(autoincrement())
+  name       String      @unique
+  resources  Resource[]  @relation("ResourceNationTags")
+}
+
+model AttributeTag {
+  id         Int         @id @default(autoincrement())
+  name       String      @unique
+  resources  Resource[]  @relation("ResourceAttributeTags")
+}
+
+model GeographicTag {
+  id         Int         @id @default(autoincrement())
+  name       String      @unique
+  resources  Resource[]  @relation("ResourceGeographicTags")
+}
