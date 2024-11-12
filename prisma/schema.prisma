@@ -21,7 +21,6 @@ model Resource {
   description     String?
   dateEstablished DateTime?
   dateUpdated     DateTime?       @updatedAt
-  type            String
   
   // Relationships
   authorities     Contact[]       @relation("ResourceAuthorities")
