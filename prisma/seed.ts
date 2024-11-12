@@ -60,60 +60,62 @@ async function main(): Promise<void> {
 		},
 	});
 
-	// Create Resource
-	const resource = await prisma.resource.create({
-		data: {
-			title: 'Resource Title',
-			description: 'Resource description here',
-			dateEstablished: new Date('2020-01-01'),
+	// Create 6 Resources
+	for (let i: number = 0; i <= 5; i++) {
+		const resource = await prisma.resource.create({
+			data: {
+				title: 'Resource Title ' + i,
+				description: 'Resource description here',
+				dateEstablished: new Date('2020-01-01'),
 
-			authorities: {
-				connect: [{ id: contact1.id }],
-			},
-			stewards: {
-				connect: [{ id: contact2.id }],
-			},
-			mavens: {
-				connect: [{ id: contact1.id }],
-			},
+				authorities: {
+					connect: [{ id: contact1.id }],
+				},
+				stewards: {
+					connect: [{ id: contact2.id }],
+				},
+				mavens: {
+					connect: [{ id: contact1.id }],
+				},
 
-			nationTags: {
-				connect: [{ id: nation1.id }, { id: nation2.id }],
+				nationTags: {
+					connect: [{ id: nation1.id }, { id: nation2.id }],
+				},
+				attributeTags: {
+					connect: [{ id: attributeTag1.id }, { id: attributeTag2.id }],
+				},
+				geographicTags: {
+					connect: [{ id: geographicTag1.id }, { id: geographicTag2.id }],
+				},
 			},
-			attributeTags: {
-				connect: [{ id: attributeTag1.id }, { id: attributeTag2.id }],
-			},
-			geographicTags: {
-				connect: [{ id: geographicTag1.id }, { id: geographicTag2.id }],
-			},
-		},
-	});
-	console.log({ resource });
+		});
+		console.log({ resource });
 
-	// Create Training Resources linked to Resource
-	await prisma.trainingResource.create({
-		data: {
-			title: 'Training 101',
-			description: 'Introduction to Resource Management',
-			url: 'https://example.com/training101',
-			dateEstablished: new Date('2021-05-01'),
-			resource: {
-				connect: { id: resource.id },
+		// Create Training Resources linked to Resource
+		await prisma.trainingResource.create({
+			data: {
+				title: 'Training 101',
+				description: 'Introduction to Resource Management',
+				url: 'https://example.com/training101',
+				dateEstablished: new Date('2021-05-01'),
+				resource: {
+					connect: { id: resource.id },
+				},
 			},
-		},
-	});
+		});
 
-	await prisma.trainingResource.create({
-		data: {
-			title: 'Advanced Training',
-			description: 'In-depth Resource Techniques',
-			url: 'https://example.com/advanced-training',
-			dateEstablished: new Date('2022-01-01'),
-			resource: {
-				connect: { id: resource.id },
+		await prisma.trainingResource.create({
+			data: {
+				title: 'Advanced Training',
+				description: 'In-depth Resource Techniques',
+				url: 'https://example.com/advanced-training',
+				dateEstablished: new Date('2022-01-01'),
+				resource: {
+					connect: { id: resource.id },
+				},
 			},
-		},
-	});
+		});
+	}
 }
 
 main()
