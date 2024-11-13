@@ -1,9 +1,9 @@
-import { prisma } from '../../lib/prisma';
+import { db } from '../../lib/prisma';
 import ResourceCard from '@/components/ResourceCard';
 import SearchInput from '@/components/SearchInput';
 
 export default async function Home() {
-	const resources = await prisma.resource.findMany();
+	const resources = await db.resource.findMany();
 
 	return (
 		<main className="">
