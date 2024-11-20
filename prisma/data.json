@@ -1,0 +1,179 @@
+{
+	"resources": [
+		{
+			"title": "American Community Survey",
+			"organization": "U.S. Census Bureau",
+			"type": "Federal",
+			"description": "The ACS is a nationwide survey collecting and producing data annually on social, economic, housing, and demographic characteristics for our nation's communities (including data on disability, health insurance coverage, etc.) Data from the ACS dates back to 2005 to our most current release of 2021 ACS Data, which come in the form of 1-Year and 5-year datasets providing data for a wide range of geographies from the nation and state level down to the granular census tract and block group levels. This data is available via data.census.gov and downloadable in Excel, CSV, ZIP formats as well as accessible via the Census Data API.",
+			"url": "https://www.census.gov/programs-surveys/acs/data.html",
+			"contacts": [
+				{
+					"name": "Charles W. Gamble, III",
+					"email": "charles.w.gamble.iii@census.gov"
+				},
+				{
+					"name": "Vicki Mack",
+					"email": "vicki.r.mack@census.gov"
+				}
+			],
+			"trainings": []
+		},
+		{
+			"title": "U.S. Census Bureau’s Decennial Census P.L. 94-171 Redistricting Data",
+			"organization": "U.S. Census Bureau",
+			"type": "Federal",
+			"description": "Public Law (P.L.) 94-171, enacted by Congress in December 1975, requires the Census Bureau to provide states the opportunity to identify the small area geography for which they need data in order to conduct legislative redistricting. The law also requires the U.S. Census Bureau to furnish tabulations of population to each state, including for those small areas the states have identified, within one year of Census day. Since the first Census Redistricting Data Program, conducted as part of the 1980 census, the U.S. Census Bureau has included summaries for the major race groups specified by the Statistical Programs and Standards Office of the U.S. Office of Management and Budget (OMB) in Directive 15 (as issued in 1977 and revised in 1997).The 2020 Census State Redistricting Data (Public Law 94-171) Summary File is available through the Census Bureau’s data exploration platform, data.census.gov. The geographic support products are available through the Geography Program section on <www.census.gov> and include block maps, state legislative district with voting district maps, tract maps, school district maps, TIGER/Line shapefiles, block assignment files and corresponding name lookup tables, and 2010 to 2020 Census block relationship files.",
+			"url": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html#:~:text=2020%20Census%20Redistricting%20Data%20(P.L.,toolkit%20on%20September%2016%2C%202021.",
+			"contacts": [
+				{
+					"name": "James Whitehorne",
+					"email": "james.whitehorne@census.gov"
+				},
+				{
+					"name": "Colleen Joyce",
+					"email": "colleen.d.joyce@census.gov"
+				},
+				{
+					"name": "Jennie Karalewich",
+					"email": "jennie.karalewich@census.gov"
+				}
+			],
+			"trainings": []
+		},
+		{
+			"title": "U.S. Census Bureau’s 2020 Census Demographic and Housing Characteristics File (DHC)",
+			"organization": "U.S. Census Bureau",
+			"type": "Federal",
+			"description": "The 2020 Census Demographic and Housing Characteristics File (DHC) includes detailed data tables on the following: -- Subjects: Age, sex, race, Hispanic or Latino origin, household type, family type, relationship to householder, group quarters population, housing occupancy, and housing tenure --Lowest level of geography: Varies, with many tables at the census block level -- Many of the DHC tables are also available for ZIP Code Tabulation Areas (ZCTA) generalized representations of U.S. Postal Service ZIP Code service routes.                               All DHC data tables are available on data.census.gov. Available via API. ",
+			"url": "https://www.census.gov/data/tables/2023/dec/2020-census-dhc.html",
+			"contacts": [],
+			"trainings": []
+		},
+		{
+			"title": "U.S. Census Bureau’s Current Population Survey",
+			"organization": "U.S. Census Bureau",
+			"type": "Federal",
+			"description": "The Current Population Survey (CPS), sponsored jointly by the U.S. Census Bureau and the U.S. Bureau of Labor Statistics (BLS), is the primary source of labor force statistics for the population of the United States. Basic CPS data is available monthly and available for download in CSV format. The CPS is administered by the Census Bureau using a probability selected sample of about 60,000 occupied households. The fieldwork is conducted during the calendar week that includes the 19th of the month. The questions refer to activities during the prior week; that is, the week that includes the 12th of the month. Households from all 50 states and the District of Columbia are in the survey for 4 consecutive months, out for 8, and then return for another 4 months before leaving the sample permanently. This design ensures a high degree of continuity from one month to the next (as well as over the year). ",
+			"url": "https://www.census.gov/programs-surveys/cps.html",
+			"contacts": [
+				{
+					"name": "Steven J Borunda Escoto",
+					"email": "steven.j.borunda.escoto@census.gov"
+				}
+			],
+			"trainings": []
+		},
+		{
+			"title": "Tribal data across Census products",
+			"organization": "U.S. Census Bureau",
+			"type": "Federal",
+			"description": "Tribal data on numerous Census datasets (ACS, SAIPE, Economic Census, Community Resilience Estimates) and information on APIs.",
+			"url": "https://www.census.gov/tribal/",
+			"contacts": [
+				{
+					"name": "Eric Coyle",
+					"email": "eric.a.coyle@census.gov"
+				}
+			],
+			"trainings": []
+		},
+		{
+			"title": "HUD Data Portal",
+			"organization": "U.S. DEPARTMENT OF HOUSING AND URBAN DEVELOPMENT",
+			"type": "Federal",
+			"description": "Information on median family incomes and income limits for HUD programs, as well as microdata from research initiatives on topics such as housing discrimination, the HUD-insured multifamily housing stock, and the public housing population.",
+			"url": "https://data.hud.gov/",
+			"contacts": [
+				{
+					"name": "Lydia Taghavi",
+					"email": "Lydia.B.Taghavi@hud.gov"
+				}
+			],
+			"trainings": []
+		},
+		{
+			"title": "Local Area Unemployment Statistics (LAUS)",
+			"organization": "U.S. BUREAU OF LABOR STATISTICS",
+			"type": "Federal",
+			"description": "The LAUS program is a hierarchy of non-survey methodologies used to replicate for roughly 7,600 subnational areas the household employment and unemployment concepts of the Current Population Survey (CPS), which is the source of the U.S. unemployment rate. The unemployment rate is a direct measure of slack in the supply of labor.",
+			"url": "https://www.bls.gov/lau/lauov.htm",
+			"contacts": [
+				{
+					"name": "Tom Krolik",
+					"email": "krolik.thomas@bls.gov"
+				}
+			],
+			"trainings": []
+		},
+		{
+			"title": "USDA Rural Gateway",
+			"organization": "U.S. DEPARTMENT OF AGRICULTURE",
+			"type": "Federal",
+			"description": "The data enable the exploration of RD investments to the program level through a state/county/CD lens. They can be used to determine where loan, grant, and loan guarantee investments are made; how investment within a state/county has been trending over time; and how investment financing compares to other counties in the same state or other states. The various views allow access to data about all states, counties, programs and investment types from 2011 to 2023.",
+			"url": "https://www.rd.usda.gov/rural-data-gateway/rural-investments",
+			"contacts": [
+				{
+					"name": "James Barham",
+					"email": "james.barham@usda.gov"
+				}
+			],
+			"trainings": []
+		},
+		{
+			"title": "Quarterly Census of Employment Wages (QCEW)",
+			"organization": "U.S. BUREAU OF LABOR STATISTICS",
+			"type": "Federal",
+			"description": "The Quarterly Census of Employment and Wages (QCEW) program publishes a quarterly count of employment and wages reported by employers covering more than 95 percent of U.S. jobs, available at the county, MSA, state and national levels by industry.",
+			"url": "https://www.bls.gov/cew/",
+			"contacts": [
+				{
+					"name": "Tom Krolik",
+					"email": "krolik.thomas@bls.gov"
+				}
+			],
+			"trainings": []
+		},
+		{
+			"title": "HUD: Section 184 Program Data",
+			"organization": "U.S. DEPARTMENT OF HOUSING AND URBAN DEVELOPMENT",
+			"type": "Federal",
+			"description": "The Section 184 Indian Home Loan Guarantee Program is a home mortgage product for Native American and Alaska Native families. It has low downpayment and flexible underwriting. Section 184 loans can be used, both on and off native lands, for new construction, rehabilitation, purchase of an existing home, or refinance. One of the only federal loan gurantee programs of its type & scale. Will be of high interest to Native lenders in group.",
+			"url": "https://www.hud.gov/section184",
+			"contacts": [
+				{
+					"name": "Jad Atallah",
+					"email": "jad.k.atallah@hud.gov"
+				}
+			],
+			"trainings": []
+		},
+		{
+			"title": "SBA Datasets",
+			"organization": "SMALL BUSINESS ADMINISTRATION",
+			"type": "Federal",
+			"description": "Includes data on Regional Innovation Clusters, state licenses and permits, Procurement Technical Assistance Centers, and more. The 1) SBA 7(a) and 504 loan data reports, 2) SBA Coronavirus (COVID-19) Relief Options: Paycheck Protection Program (PPP) Report and Data, and 3) SBA Coronavirus (COVID-19) Relief Options: Economic Injury Disaster Loan (EIDL) Loans Report, would likely be most relevant to this topic.",
+			"url": "https://catalog.data.gov/dataset?q=SBA",
+			"contacts": [
+				{
+					"name": "Joshua Dykema",
+					"email": "Joshua.dykema@sba.gov"
+				}
+			],
+			"trainings": []
+		},
+		{
+			"title": "Prevailing Wage",
+			"organization": "U.S. BUREAU OF LABOR STATISTICS",
+			"type": "Federal",
+			"description": "The prevailing wage rate is defined as the average wage paid to similarly employed workers in a specific occupation in the area of intended employment.",
+			"url": "https://www.dol.gov/agencies/eta/foreign-labor/wages",
+			"contacts": [
+				{
+					"name": "Tom Krolik",
+					"email": "krolik.thomas@bls.gov"
+				}
+			],
+			"trainings": []
+		}
+	]
+}
