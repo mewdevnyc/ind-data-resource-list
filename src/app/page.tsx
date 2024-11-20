@@ -15,16 +15,19 @@ export default function Home() {
 	);
 	console.log(resourceTags);
 	return (
-		<main className="">
-			{isLoadingTags ? (
-				'Loading...'
-			) : (
-				<div>
-					{resourceTags?.map(resource => (
-						<ResourceCard key={resource.id} {...resource} />
-					))}
-				</div>
-			)}
-		</main>
+		<section className="">
+			<h2 className="">Resources</h2>
+			<div className="grid grid-cols-1 gap-4">
+				{isLoadingTags ? (
+					'Loading...'
+				) : (
+					<>
+						{resourceTags?.map(resource => (
+							<ResourceCard key={resource.id} {...resource} />
+						))}
+					</>
+				)}
+			</div>
+		</section>
 	);
 }
