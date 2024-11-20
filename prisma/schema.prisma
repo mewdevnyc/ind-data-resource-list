@@ -5,7 +5,7 @@
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
   previewFeatures = ["fullTextSearch", "relationJoins"]
 }
 
@@ -14,69 +14,38 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-
 model Resource {
-  id              Int             @id @default(autoincrement())
-  title           String
-  description     String?
-  dateEstablished DateTime?
-  dateUpdated     DateTime?       @updatedAt
-  
+  id           Int      @id @default(autoincrement())
+  title        String
+  organization String
+  type         String
+  description  String?
+  url          String
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
   // Relationships
-  authorities     Contact[]       @relation("ResourceAuthorities")
-  stewards        Contact[]       @relation("ResourceStewards")
-  mavens          Contact[]       @relation("ResourceMavens")
-  trainings       TrainingResource[]
-
-  nationTags      Nation[]        @relation("ResourceNationTags")
-  attributeTags   AttributeTag[]  @relation("ResourceAttributeTags")
-  geographicTags  GeographicTag[] @relation("ResourceGeographicTags")
-
-  createdAt       DateTime        @default(now())
-  updatedAt       DateTime        @updatedAt
-
-
+  contacts  Contact[]          @relation("ResourceContacts")
+  trainings TrainingResource[]
 }
 
 model Contact {
-  id         Int       @id @default(autoincrement())
-  name       String
-  email      String?
-  phone      String?
+  id    Int     @id @default(autoincrement())
+  name  String
+  title String
+  email String?
 
   // Relationships
-  authorityFor Resource[] @relation("ResourceAuthorities")
-  stewardFor   Resource[] @relation("ResourceStewards")
-  mavenFor     Resource[] @relation("ResourceMavens")
+  contactFor Resource[] @relation("ResourceContacts")
 }
 
 model TrainingResource {
-  id             Int      @id @default(autoincrement())
-  title          String
-  description    String?
-  url            String?
-  dateEstablished DateTime?
-  dateUpdated    DateTime?
-  
+  id          Int     @id @default(autoincrement())
+  title       String
+  description String?
+  url         String?
+
   // Foreign Key
-  resourceId     Int
-  resource       Resource @relation(fields: [resourceId], references: [id])
-}
-
-model Nation {
-  id         Int         @id @default(autoincrement())
-  name       String      @unique
-  resources  Resource[]  @relation("ResourceNationTags")
-}
-
-model AttributeTag {
-  id         Int         @id @default(autoincrement())
-  name       String      @unique
-  resources  Resource[]  @relation("ResourceAttributeTags")
-}
-
-model GeographicTag {
-  id         Int         @id @default(autoincrement())
-  name       String      @unique
-  resources  Resource[]  @relation("ResourceGeographicTags")
+  resourceId Int
+  resource   Resource @relation(fields: [resourceId], references: [id])
 }
