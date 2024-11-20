@@ -6,6 +6,7 @@ export async function GET() {
 		const resources = await db.resource.findMany({
 			include: {
 				trainings: true,
+				contacts: true,
 			},
 		});
 		return NextResponse.json(resources, { status: 200 });
