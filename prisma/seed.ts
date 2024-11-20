@@ -1,117 +1,47 @@
-// prisma/seed.ts
-
 import { PrismaClient } from '@prisma/client';
+import * as fs from 'fs';
+
 const prisma = new PrismaClient();
 
-async function main(): Promise<void> {
-	// Create Contacts
-	const contact1 = await prisma.contact.create({
-		data: {
-			name: 'Alice Anderson',
-			email: 'alice@example.com',
-			phone: '123-456-7890',
-		},
-	});
+interface Contact {
+	name: string;
+	title: string;
+	email?: string;
+}
 
-	const contact2 = await prisma.contact.create({
-		data: {
-			name: 'Bob Brown',
-			email: 'bob@example.com',
-			phone: '987-654-3210',
-		},
-	});
+interface TrainingResource {
+	title: string;
+	description?: string;
+	url?: string;
+}
 
-	// Create Nations
-	const nation1 = await prisma.nation.create({
-		data: {
-			name: 'NationA',
-		},
-	});
+async function main() {
+	// Read the JSON file
+	const data = JSON.parse(fs.readFileSync('prisma/data.json', 'utf-8'));
 
-	const nation2 = await prisma.nation.create({
-		data: {
-			name: 'NationB',
-		},
-	});
-
-	// Create Attribute Tags
-	const attributeTag1 = await prisma.attributeTag.create({
-		data: {
-			name: 'AttributeX',
-		},
-	});
-
-	const attributeTag2 = await prisma.attributeTag.create({
-		data: {
-			name: 'AttributeY',
-		},
-	});
-
-	// Create Geographic Tags
-	const geographicTag1 = await prisma.geographicTag.create({
-		data: {
-			name: 'Region1',
-		},
-	});
-
-	const geographicTag2 = await prisma.geographicTag.create({
-		data: {
-			name: 'Region2',
-		},
-	});
-
-	// Create 6 Resources
-	for (let i: number = 0; i <= 5; i++) {
-		const resource = await prisma.resource.create({
+	// Iterate through resources and seed data
+	for (const resourceData of data.resources) {
+		// Create resource with contacts and trainings
+		await prisma.resource.create({
 			data: {
-				title: 'Resource Title ' + i,
-				description: 'Resource description here',
-				dateEstablished: new Date('2020-01-01'),
-
-				authorities: {
-					connect: [{ id: contact1.id }],
+				title: resourceData.title,
+				organization: resourceData.organization,
+				type: resourceData.type,
+				description: resourceData.description,
+				url: resourceData.url,
+				contacts: {
+					create: resourceData.contacts.map((contact: Contact) => ({
+						name: contact.name,
+						title: contact.title ? contact.title : '',
+						email: contact.email,
+					})),
 				},
-				stewards: {
-					connect: [{ id: contact2.id }],
-				},
-				mavens: {
-					connect: [{ id: contact1.id }],
-				},
-
-				nationTags: {
-					connect: [{ id: nation1.id }, { id: nation2.id }],
-				},
-				attributeTags: {
-					connect: [{ id: attributeTag1.id }, { id: attributeTag2.id }],
-				},
-				geographicTags: {
-					connect: [{ id: geographicTag1.id }, { id: geographicTag2.id }],
-				},
-			},
-		});
-		console.log({ resource });
-
-		// Create Training Resources linked to Resource
-		await prisma.trainingResource.create({
-			data: {
-				title: 'Training 101',
-				description: 'Introduction to Resource Management',
-				url: 'https://example.com/training101',
-				dateEstablished: new Date('2021-05-01'),
-				resource: {
-					connect: { id: resource.id },
-				},
-			},
-		});
-
-		await prisma.trainingResource.create({
-			data: {
-				title: 'Advanced Training',
-				description: 'In-depth Resource Techniques',
-				url: 'https://example.com/advanced-training',
-				dateEstablished: new Date('2022-01-01'),
-				resource: {
-					connect: { id: resource.id },
+				trainings: {
+					create: resourceData.trainings.map((training: TrainingResource) => ({
+						title: training.title,
+						description: training.description,
+						url: training.url,
+					})),
 				},
 			},
 		});
@@ -119,10 +49,12 @@ async function main(): Promise<void> {
 }
 
 main()
-	.catch((e: Error) => {
-		console.error(e);
-		process.exit(1);
-	})
-	.finally(async () => {
+	.then(async () => {
+		console.log('Seeding complete!');
 		await prisma.$disconnect();
+	})
+	.catch(async e => {
+		console.error(e);
+		await prisma.$disconnect();
+		process.exit(1);
 	});
