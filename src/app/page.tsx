@@ -2,17 +2,24 @@
 import ResourceCard from '@/components/ResourceCard';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
-import { Resource } from '@prisma/client';
+import { Prisma } from '@prisma/client';
+type ResourceWithRelations = Prisma.ResourceGetPayload<{
+	include: {
+		trainings: true;
+		contacts: true;
+	};
+}>;
+
 export default function Home() {
-	const { data: resourceTags, isLoading: isLoadingTags } = useQuery<Resource[]>(
-		{
-			queryKey: ['resources'],
-			queryFn: async () => {
-				const response = await axios.get('/api/resources');
-				return response.data;
-			},
-		}
-	);
+	const { data: resourceTags, isLoading: isLoadingTags } = useQuery<
+		ResourceWithRelations[]
+	>({
+		queryKey: ['resources'],
+		queryFn: async () => {
+			const response = await axios.get('/api/resources');
+			return response.data;
+		},
+	});
 	console.log(resourceTags);
 	return (
 		<section className="">

@@ -1,40 +1,40 @@
 'use client';
-interface Training {
-	id: number;
-	title: string | null;
-	description: string | null;
-	url: string | null;
-	dateEstablished: string | null;
-}
 
-interface ResourceCardProps {
-	id: number;
-	title: string | null;
-	description: string | null;
-	url?: string | null;
-	trainings?: Training[] | null;
-	dateEstablished: Date | null;
-	dateUpdated: Date | null;
-	createdAt: Date | null;
-	updatedAt: Date | null;
-}
+import { Prisma } from '@prisma/client';
+type ResourceWithRelations = Prisma.ResourceGetPayload<{
+	include: {
+		trainings: true;
+		contacts: true;
+	};
+}>;
 
-export default function ResourceCard(props: ResourceCardProps) {
+export default function ResourceCard(props: ResourceWithRelations) {
 	console.log(props);
 	return (
 		<div className="bg-black text-white rounded-md drop-shadow m-1 p-2 ">
 			<div className="grid grid-cols-2 gap-3">
-				<div className="">
+				<div className="col-span-2">
 					<h3 className="">{props.title}</h3>
-					<p>Webpage</p>
-				</div>
-				<div className="text-right">
-					<p>{props.dateEstablished?.toString()}</p>
-					<p>{props.dateEstablished?.toString()}</p>
+					<a href={props.url}>Webpage</a>
 				</div>
 				<div className="col-span-2">
 					<h4>Description</h4>
 					<p className="">{props.description}</p>
+				</div>
+				<div>
+					<h4 className="">Contacts</h4>
+					{props.contacts && props.contacts?.length > 0 ? (
+						<ul>
+							{props.contacts?.map(contact => (
+								<li key={contact.id}>
+									<h5>{contact.name}</h5>
+									<p className="">Email: {contact.email}</p>
+								</li>
+							))}
+						</ul>
+					) : (
+						<p className="">No contacts available</p>
+					)}
 				</div>
 				<div>
 					<h4 className="">Training</h4>
@@ -45,24 +45,6 @@ export default function ResourceCard(props: ResourceCardProps) {
 									<h5>{training.title}</h5>
 									<p className="">Webpage</p>
 									<p className="">{training.description}</p>
-									<p>{training.dateEstablished?.toString()}</p>
-								</li>
-							))}
-						</ul>
-					) : (
-						<p className="">No training resources available</p>
-					)}
-				</div>
-				<div>
-					<h4 className="">Contacts</h4>
-					{props.trainings && props.trainings?.length > 0 ? (
-						<ul>
-							{props.trainings?.map(training => (
-								<li key={training.id}>
-									<h5>{training.title}</h5>
-									<p className="">Webpage</p>
-									<p className="">{training.description}</p>
-									<p>{training.dateEstablished?.toString()}</p>
 								</li>
 							))}
 						</ul>
