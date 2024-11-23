@@ -13,39 +13,39 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
-
 model Resource {
-  id           Int      @id @default(autoincrement())
+  id           Int        @id @default(autoincrement())
   title        String
   organization String
   type         String
-  description  String?
+  description  String
   url          String
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
 
   // Relationships
-  contacts  Contact[]          @relation("ResourceContacts")
-  trainings TrainingResource[]
+  contacts     Contact[]  
+  trainings    Training[] 
 }
 
 model Contact {
-  id    Int     @id @default(autoincrement())
-  name  String
-  title String
-  email String?
-
-  // Relationships
-  contactFor Resource[] @relation("ResourceContacts")
-}
-
-model TrainingResource {
-  id          Int     @id @default(autoincrement())
+  id          Int        @id @default(autoincrement())
+  name        String
   title       String
-  description String?
-  url         String?
+  email       String
 
   // Foreign Key
-  resourceId Int
-  resource   Resource @relation(fields: [resourceId], references: [id])
+  resourceId  Int
+  resource    Resource   @relation(fields: [resourceId], references: [id], onDelete: Cascade)
+}
+
+model Training {
+  id          Int        @id @default(autoincrement())
+  title       String
+  description String  
+  url         String
+
+  // Foreign Key
+  resourceId  Int
+  resource    Resource   @relation(fields: [resourceId], references: [id], onDelete: Cascade)
 }
