@@ -1,5 +1,5 @@
 'use client';
 
 export default function Footer() {
-	return <footer>TOP Sprint 2024 MEWdev Demo 1.0</footer>;
+	return <footer className="text-center">Census TOP Sprint 2024 MEWdev</footer>;
 }

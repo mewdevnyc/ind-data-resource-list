@@ -3,7 +3,6 @@ import ResourceCard from '@/components/ResourceCard';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import { Prisma } from '@prisma/client';
-import { Section } from '@radix-ui/themes';
 
 type ResourceWithRelations = Prisma.ResourceGetPayload<{
 	include: {
@@ -24,12 +23,34 @@ export default function Home() {
 	});
 	console.log(resourceTags);
 	return (
-		<>
-			<Section id="" size="2">
-				<p>TEXT</p>
-			</Section>
+		<div className="">
+			<section id="about" className="m-4">
+				<section className="text-black">
+					<h2 className="text-2xl font-bold mb-4">About</h2>
+					<p className="mb-4 text-black">
+						The Indigenous Data Review Project aims to bring together relevant
+						datasets from federal, state, academic, and other sources into an
+						organized, searchable list. In conjunction, it offers users the
+						ability to explore, comment, and discuss real-world experiences
+						utilizing the data resource.
+					</p>
+					<p className="mb-4 text-black">
+						The project&apos;s goal is to foster collaboration and community
+						among Indigenous-centered not-for-profit organizations in their
+						data-driven initiatives.
+					</p>
+					<p className="text-black">
+						Feedback is welcome to improve the platform and its usefulness.
+					</p>
+				</section>
+			</section>
 
-			<section id="resources" className="">
+			<section id="contact" className="m-4">
+				<h2 className="text-black">Contact</h2>
+				<p className="text-black">contact@mewdev.nyc</p>
+			</section>
+
+			<section id="resources" className="m-4">
 				<h2 className="">Resources</h2>
 				<div className="grid grid-cols-1 gap-4">
 					{isLoadingTags ? (
@@ -43,6 +64,6 @@ export default function Home() {
 					)}
 				</div>
 			</section>
-		</>
+		</div>
 	);
 }

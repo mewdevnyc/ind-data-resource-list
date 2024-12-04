@@ -2,16 +2,18 @@
 import React, { useState } from 'react';
 import { Cross2Icon } from '@radix-ui/react-icons';
 
-const NavLinks = ['Home', 'About', 'Resources'];
+//const NavLinks = ['Home', 'About', 'Resources'];
 
 const Header: React.FC = () => {
 	const [isOpen, setIsOpen] = useState<boolean>(false);
 
 	return (
-		<header className="fixed top-0 left-0 w-full z-50 bg-black text-white">
+		<header className="top-0 left-0 w-full z-50 bg-black text-white">
 			<div className="container mx-auto flex items-center justify-between px-6 py-4">
 				{/* Logo */}
-				<div className="text-2xl font-bold">Indigenous Data Review Project</div>
+				<a href="#">
+					<h1 className="text-sm font-bold"> Indigenous Data Review Project</h1>{' '}
+				</a>
 
 				{/* Toggle Button */}
 				<button
@@ -31,17 +33,17 @@ const Header: React.FC = () => {
 
 				{/* Desktop Navigation */}
 				<nav className="hidden md:flex space-x-6">
-					<a href="#home" className="hover:underline">
+					<a href="#" className="hover:underline">
 						Home
 					</a>
 					<a href="#about" className="hover:underline">
 						About
 					</a>
-					<a href="#services" className="hover:underline">
-						Services
-					</a>
 					<a href="#contact" className="hover:underline">
 						Contact
+					</a>
+					<a href="#resources" className="hover:underline">
+						Resources
 					</a>
 				</nav>
 			</div>
@@ -59,11 +61,11 @@ const Header: React.FC = () => {
 						<a href="#about" className="hover:underline">
 							About
 						</a>
-						<a href="#services" className="hover:underline">
-							Services
-						</a>
 						<a href="#contact" className="hover:underline">
 							Contact
+						</a>
+						<a href="#resources" className="hover:underline">
+							Resources
 						</a>
 					</nav>
 					{/* Close Button */}
