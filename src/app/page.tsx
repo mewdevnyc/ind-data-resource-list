@@ -26,7 +26,7 @@ export default function Home() {
 		<div className="">
 			<section id="about" className="m-4">
 				<section className="text-black">
-					<h2 className="text-2xl font-bold mb-4">About</h2>
+					<h2 className="mb-4">About</h2>
 					<p className="mb-4 text-black">
 						The Indigenous Data Review Project aims to bring together relevant
 						datasets from federal, state, academic, and other sources into an
