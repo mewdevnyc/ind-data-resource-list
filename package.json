@@ -15,7 +15,7 @@
 		"react-dom": "$react-dom"
 	},
 	"dependencies": {
-		"@prisma/client": "^5.22.0",
+		"@prisma/client": "^6.0.1",
 		"@radix-ui/react-icons": "^1.3.2",
 		"@radix-ui/react-navigation-menu": "^1.2.1",
 		"@radix-ui/themes": "latest",
